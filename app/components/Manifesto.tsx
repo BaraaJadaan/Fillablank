@@ -19,7 +19,7 @@ export default function Manifesto() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Monumental Headline */}
           <div className="lg:col-span-6 space-y-8">
-            <h2 className="font-tusker text-5xl sm:text-7xl md:text-8xl tracking-tight uppercase leading-[0.95] text-[#f4f3ef]">
+            <h2 className="font-tusker text-5xl sm:text-7xl md:text-8xl tracking-tight uppercase text-[#f4f3ef]">
               Why we refuse
               <br />
               to be a regular

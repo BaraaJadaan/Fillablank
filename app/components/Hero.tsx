@@ -71,7 +71,7 @@ export default function Hero() {
           </div>
 
           {/* Monumental Headline in Tusker Grotesk */}
-          <h1 className="font-tusker text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8.5rem] font-semibold leading-[0.97] tracking-normal text-[#f4f3ef] uppercase ">
+          <h1 className="font-tusker text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8.5rem] font-semibold tracking-normal text-[#f4f3ef] uppercase ">
             We turn the ambitious   
             <span>
               {` `}
@@ -105,7 +105,7 @@ export default function Hero() {
               </span>
 
               {/* Hover Scrolling Marquee Track */}
-              <div className="marquee-track font-tusker text-base tracking-widest text-[#0a0a0c]">
+              <div className="marquee-track font-tusker text-lg tracking-widest text-[#0a0a0c]">
                 <div className="flex gap-6 animate-marquee whitespace-nowrap">
                   <span>SELECTED CASES ✦ EXPLORE WORKS ✦ SELECTED CASES ✦ EXPLORE WORKS</span>
                 </div>
