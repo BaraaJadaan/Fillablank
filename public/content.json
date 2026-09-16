@@ -1,0 +1,491 @@
+{
+  "hero": {
+    "badge": {
+      "label": "Digital Engineering Studio",
+      "icon": "Code"
+    },
+    "mainHeadline": "Engineering High-Performance Digital Products.",
+    "subHeadline": "Mobile Apps, Web Platforms & Custom Systems.",
+    "description": "We build mission-critical mobile applications, scalable web platforms, and robust enterprise software engineered for performance, security, and real business impact.",
+    "ctaButtons": [
+      {
+        "label": "Start Your Project",
+        "targetSection": "#contact",
+        "variant": "primary"
+      },
+      {
+        "label": "View Our Work",
+        "targetSection": "#projects",
+        "variant": "secondary"
+      }
+    ],
+    "statistics": [
+      {
+        "number": "10+",
+        "label": "Projects Delivered"
+      },
+      {
+        "number": " 24/7",
+        "label": "Support Available"
+      },
+      {
+        "number": "100%",
+        "label": "Client Satisfaction"
+      },
+      {
+        "number": "0",
+        "label": "Missed Deadlines"
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": {
+      "label": "What We Offer",
+      "icon": "Rocket"
+    },
+    "title": "Our Services",
+    "description": "Comprehensive digital solutions tailored to elevate your business in the modern marketplace",
+    "services": [
+      {
+        "title": "Mobile App Development",
+        "description": "Native and cross-platform mobile applications that deliver exceptional user experiences on iOS and Android.",
+        "icon": "Smartphone",
+        "colorGradient": "from-primary to-accent"
+      },
+      {
+        "title": "Web Development",
+        "description": "Responsive, scalable, and high-performance web applications built with the latest technologies and best practices.",
+        "icon": "Globe",
+        "colorGradient": "from-accent to-secondary"
+      },
+      {
+        "title": "AI Integration",
+        "description": "Intelligent automation and AI-powered features that transform how your business operates and serves customers.",
+        "icon": "Brain",
+        "colorGradient": "from-secondary to-primary"
+      },
+      {
+        "title": "UI/UX Design",
+        "description": "Beautiful, intuitive interfaces designed with your users in mind, ensuring maximum engagement and satisfaction.",
+        "icon": "Palette",
+        "colorGradient": "from-primary to-secondary"
+      },
+      {
+        "title": "Digital Strategy",
+        "description": "Comprehensive digital transformation strategies that align technology with your business goals and vision.",
+        "icon": "Rocket",
+        "colorGradient": "from-accent to-primary"
+      },
+      {
+        "title": "Security & Maintenance",
+        "description": "Ongoing support, updates, and security measures to keep your digital solutions running smoothly and safely.",
+        "icon": "Shield",
+        "colorGradient": "from-secondary to-accent"
+      },
+      {
+        "title": "Cloud Infrastructure",
+        "description": "Scalable cloud solutions with AWS, Azure, and Google Cloud Platform for enterprise-grade reliability.",
+        "icon": "Globe",
+        "colorGradient": "from-accent to-primary"
+      }
+    ],
+    "ctaButton": {
+      "label": "Let's Talk About Your Project",
+      "targetSection": "#contact"
+    }
+  },
+  "projects": {
+    "eyebrow": {
+      "label": "Our Portfolio",
+      "icon": "ExternalLink"
+    },
+    "title": "Featured Projects",
+    "description": "Discover how we've helped businesses transform their digital presence",
+    "projects": [
+      {
+        "title": "Rafik Darbak Mobile App",
+        "category": "Mobile Development",
+        "description": "Rafik Darbak is the first ride-sharing application designed for users in Syria.",
+        "image": "https://drive.google.com/uc?export=view&id=1K5W91jUJnL34w9uoXDuJvmiXSCbdrJl6",
+        "imageAlt": "Rafik Darbak ride-sharing mobile application interface",
+        "tags": [
+          "Flutter",
+          "Supabase"
+        ],
+        "colorGradient": "from-accent via-secondary to-primary",
+        "links": {
+          "demo": "https://play.google.com/store/apps/details?id=com.saveride.app"
+        }
+      },
+      {
+        "title": "Lumytic Website",
+        "category": "Web Development",
+        "description": "Showcase website for Lumytic's ERB software\n",
+        "image": "https://drive.google.com/uc?export=view&id=1kODt4BJkUqEtRWjqj1WPB720bbLNzT-n",
+        "imageAlt": "Lumytic ERP software website showcase and user interface",
+        "tags": [
+          "React",
+          "Advanced CSS",
+          "GSAP"
+        ],
+        "colorGradient": "from-accent via-secondary to-primary",
+        "links": {
+          "demo": "https://lumytic.com/"
+        }
+      },
+      {
+        "title": "JumlaTech",
+        "category": "ERP Development",
+        "description": "JumlaTech is an integrated digital ecosystem designed to bridge the gap between suppliers and retailers. By combining a robust ERP backbone with a suite of specialized mobile applications.",
+        "image": "https://drive.google.com/uc?export=view&id=1IR__UHH7nfXg6iGW7qyw85hKqXms8XAA",
+        "imageAlt": "JumlaTech ERP ecosystem and mobile application preview",
+        "tags": [
+          "Odoo",
+          "Python"
+        ],
+        "colorGradient": "from-accent via-secondary to-primary",
+        "links": {
+          "demo": "https://play.google.com/store/apps/details?id=com.tms.jumlatech&hl=ar"
+        }
+      },
+      {
+        "title": "Alsharq Bank",
+        "category": "E-Banking Microservices System",
+        "description": "a comprehensive e-banking system, including Accounts Management and a Bill-Pay service, with a strong focus on security, performance, and system scalability.",
+        "image": "https://drive.google.com/uc?export=view&id=1IZuSe9PqhGIbLQSgDQT7-UpMwxYGaSh0",
+        "imageAlt": "Alsharq Bank e-banking microservices dashboard and account management interface",
+        "tags": [
+          "Flask",
+          "Python"
+        ],
+        "colorGradient": "from-accent via-secondary to-primary"
+      },
+      {
+        "title": "ISP Customer Mobile Application",
+        "category": "Mobile Development",
+        "description": "Cross-platform React Native app for fiber internet customers managing subscriptions, services, and real-time diagnostics. Built unified service monitoring system with WiFi router management via TR-069 integration, subscription engine with campaign pricing, and real-time status synchronization. Solved complex state management across 15+ feature modules with offline-first architecture using Redux persistence.",
+        "image": "https://drive.google.com/uc?export=view&id=1Vkm0CkBZsezW-1jScy5lm77xFYEhWSkO",
+        "imageAlt": "ISP Customer Mobile Application interface showing subscription management and service monitoring",
+        "tags": [
+          "React Native",
+          "Firebase"
+        ],
+        "colorGradient": "from-accent via-secondary to-primary"
+      },
+      {
+        "title": "Enterprise Project & HR Management SaaS Platform",
+        "category": "Web Development",
+        "description": "Comprehensive enterprise SaaS platform delivering end-to-end solutions for project management and HR operations with real-time dashboards and bilingual support (Arabic/English). Features integrated modules for task management, HR administration, document management, real-time notifications via SignalR, and event management with multi-tenancy and role-based access control. Built with scalable architecture using Redux for state management, React Query for data fetching, and deployed across multiple environments with Azure DevOps CI/CD pipelines.",
+        "image": "https://drive.google.com/uc?export=view&id=1qNCom6amE7YJ2kehlPNns-CiMS9OR2bm",
+        "imageAlt": "Enterprise SaaS platform dashboard showing project management and HR analytics",
+        "tags": [
+          "React",
+          "Material-UI",
+          ".NET"
+        ],
+        "colorGradient": "from-accent via-secondary to-primary"
+      },
+      {
+        "title": "Archibest Competitions",
+        "category": "Web Development",
+        "description": "Leading global architecture competitions platform connecting designers worldwide to showcase creativity and compete in architectural challenges. Features competition management system with registration workflows, early bird discounts, jury evaluation tools, and multi-stage submission processes. Built comprehensive platform handling competition briefs, team registrations, payment processing, and winner announcements with partnerships from top firms like Foster + Partners, ZHA, and BIG.",
+        "image": "https://drive.google.com/uc?export=view&id=1-8Ji5284kl-F_tnTrzSsn-q6PHJLzPSf",
+        "imageAlt": "Archibest Competitions platform showcasing global architecture challenges",
+        "tags": [
+          "Next.js"
+        ],
+        "colorGradient": "from-accent via-secondary to-primary",
+        "links": {
+          "demo": "https://archibestcompetitions.com"
+        }
+      },
+      {
+        "title": "Enterprise ISP Management Platform",
+        "category": "Web Development",
+        "description": "Full-stack React/TypeScript system managing fiber network infrastructure, customer subscriptions, and promotional campaigns with complex workflows for network provisioning (switches, ports, associations). Built multi-tenant subscription engine with campaign pricing and WiFi device management handling real-time operations. Solved challenging state synchronization across 6+ interconnected entities while maintaining data integrity and handling race conditions.",
+        "image": "https://drive.google.com/uc?export=view&id=1QppSrxMeCLlpwnmmc2J_IHRylfxqCwTZ",
+        "imageAlt": "Enterprise ISP Management Platform showing network infrastructure and subscription management",
+        "tags": [
+          "React",
+          ".NET"
+        ],
+        "colorGradient": "from-accent via-secondary to-primary"
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": {
+      "label": "About Us",
+      "icon": "Users"
+    },
+    "title": "About Us",
+    "description": "A passionate team of innovators, developers, and designers dedicated to transforming ideas into exceptional digital experiences",
+    "story": {
+      "title": "Our Story",
+      "paragraphs": [
+        "We started with a simple idea: building software shouldn’t feel slow, complicated, or disconnected. Too often, teams get stuck dealing with layers of communication and rigid processes instead of actually shipping great products.",
+        "So we took a different approach...",
+        "We’re a small, focused team of builders who care about doing things right — clean architecture, fast execution, and decisions made with the end user in mind. No handoffs, no middlemen, and no unnecessary overhead.",
+        "From early-stage startups to growing products, we work closely with our clients to turn ideas into scalable, production-ready solutions. Every project we take on is built with long-term performance, clarity, and growth in mind.",
+        "We’re not here to be the biggest agency — we’re here to be the team you can rely on to move fast, think clearly, and deliver real results."
+      ]
+    },
+    "statistics": [
+      {
+        "icon": "Award",
+        "value": "Quality Over Quantity",
+        "label": "",
+        "colorGradient": "from-primary to-secondary"
+      },
+      {
+        "icon": "Code",
+        "value": "Founder-Led Development",
+        "label": "",
+        "colorGradient": "from-primary to-secondary"
+      },
+      {
+        "icon": "Send",
+        "value": "Direct Communication",
+        "label": "",
+        "colorGradient": "from-primary to-secondary"
+      },
+      {
+        "icon": "Zap",
+        "value": "Scalable Solutions",
+        "label": "",
+        "colorGradient": "from-primary to-secondary"
+      }
+    ],
+    "values": {
+      "title": "Our Core Values",
+      "items": [
+        {
+          "title": "Innovation First",
+          "description": "We stay ahead of the curve, constantly exploring new technologies and methodologies to deliver cutting-edge solutions.",
+          "icon": "🚀"
+        },
+        {
+          "title": "Client-Centric",
+          "description": "Your success is our success. We build lasting partnerships through transparent communication and exceptional results.",
+          "icon": "🤝"
+        },
+        {
+          "title": "Quality Driven",
+          "description": "We never compromise on quality. Every line of code, every pixel, and every interaction is crafted with precision.",
+          "icon": "💎"
+        },
+        {
+          "title": "Agile & Adaptive",
+          "description": "We embrace change and adapt quickly to evolving requirements, ensuring your project stays on track and on budget.",
+          "icon": "⚡"
+        }
+      ]
+    },
+    "ctaButton": {
+      "label": "Get In Touch",
+      "targetSection": "#contact"
+    }
+  },
+  "contact": {
+    "eyebrow": {
+      "label": "Get In Touch",
+      "icon": "Send"
+    },
+    "title": "Let's Build Something Great Together",
+    "description": "No guesswork. No commitment. Just a tailored demo of your idea — free.",
+    "contactInfo": [
+      {
+        "icon": "Mail",
+        "label": "Email",
+        "value": "hello@fillablank.com",
+        "colorGradient": "from-primary to-accent",
+        "link": "mailto:hello@fillablank.com"
+      },
+      {
+        "icon": "Phone",
+        "label": "Whatsapp Chat",
+        "value": "+963997748481",
+        "colorGradient": "from-accent to-secondary",
+        "link": "http://wa.me/+963997748481"
+      }
+    ],
+    "officeHours": {
+      "weekdays": "Monday - Friday: 9:00 AM - 6:00 PM PST",
+      "saturday": "Saturday: 10:00 AM - 4:00 PM PST",
+      "sunday": "Sunday: Closed"
+    },
+    "formFields": {
+      "name": {
+        "label": "Your Name",
+        "placeholder": "John Doe"
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "john@example.com"
+      },
+      "company": {
+        "label": "Company (Optional)",
+        "placeholder": "Your Company"
+      },
+      "message": {
+        "label": "Your Message",
+        "placeholder": "Tell us about your project..."
+      }
+    },
+    "submitButton": "Let’s Build Your Idea"
+  },
+  "footer": {
+    "brand": {
+      "name": "Fillablank",
+      "logo": "F",
+      "description": "Engineering high-performance mobile applications, web platforms, and custom software systems."
+    },
+    "socialLinks": [
+      {
+        "platform": "Github",
+        "url": "#",
+        "icon": "Github",
+        "label": "Github"
+      },
+      {
+        "platform": "LinkedIn",
+        "url": "#",
+        "icon": "Linkedin",
+        "label": "LinkedIn"
+      },
+      {
+        "platform": "Twitter",
+        "url": "#",
+        "icon": "Twitter",
+        "label": "Twitter"
+      },
+      {
+        "platform": "Instagram",
+        "url": "#",
+        "icon": "Instagram",
+        "label": "Instagram"
+      }
+    ],
+    "linkGroups": [
+      {
+        "category": "Company",
+        "links": [
+          {
+            "name": "About Us",
+            "href": "#about"
+          },
+          {
+            "name": "Services",
+            "href": "#services"
+          },
+          {
+            "name": "Projects",
+            "href": "#projects"
+          },
+          {
+            "name": "Contact",
+            "href": "#contact"
+          }
+        ]
+      },
+      {
+        "category": "Services",
+        "links": [
+          {
+            "name": "Mobile Apps",
+            "href": "#services"
+          },
+          {
+            "name": "Web Development",
+            "href": "#services"
+          },
+          {
+            "name": "AI Solutions",
+            "href": "#services"
+          },
+          {
+            "name": "UI/UX Design",
+            "href": "#services"
+          }
+        ]
+      },
+      {
+        "category": "Resources",
+        "links": [
+          {
+            "name": "Blog",
+            "href": "#"
+          },
+          {
+            "name": "Case Studies",
+            "href": "#"
+          },
+          {
+            "name": "Documentation",
+            "href": "#"
+          },
+          {
+            "name": "Support",
+            "href": "#"
+          }
+        ]
+      },
+      {
+        "category": "Legal",
+        "links": [
+          {
+            "name": "Privacy Policy",
+            "href": "#"
+          },
+          {
+            "name": "Terms of Service",
+            "href": "#"
+          },
+          {
+            "name": "Cookie Policy",
+            "href": "#"
+          },
+          {
+            "name": "Disclaimer",
+            "href": "#"
+          }
+        ]
+      }
+    ],
+    "newsletter": {
+      "title": "Stay Updated",
+      "description": "Subscribe to our newsletter for the latest updates, insights, and industry trends.",
+      "placeholder": "Enter your email",
+      "buttonLabel": "Subscribe"
+    },
+    "copyright": "© 2026 Fillablank. All rights reserved."
+  },
+  "navigation": {
+    "brand": {
+      "name": "Fillablank",
+      "logo": "F"
+    },
+    "links": [
+      {
+        "name": "Home",
+        "href": "#home"
+      },
+      {
+        "name": "Services",
+        "href": "#services"
+      },
+      {
+        "name": "Projects",
+        "href": "#projects"
+      },
+      {
+        "name": "About",
+        "href": "#about"
+      },
+      {
+        "name": "Contact",
+        "href": "#contact"
+      }
+    ]
+  }
+}

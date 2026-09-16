@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&family=Syne:wght@600;700;800&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --font-syne: 'Syne', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@font-face {
+  font-family: 'Tusker Grotesk';
+  src: url('/fonts/tuskergrotesk-2600semibold.woff2') format('woff2'),
+       url('/fonts/tusker-grotesk.woff2') format('woff2');
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tusker Grotesk';
+  src: url('/fonts/tuskergrotesk-2500medium.woff2') format('woff2'),
+       url('/fonts/tuskergrotesk-2600semibold.woff2') format('woff2');
+  font-weight: 300 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue-montreal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue-montreal-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('/fonts/neue-montreal-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Bespoke Typographic Hierarchy - Patrick David Brutalist & Editorial */
+  --font-tusker: 'Tusker Grotesk', sans-serif;
+  --font-syne: var(--font-syne), 'Syne', sans-serif;
+  --font-display: 'Neue Montreal', var(--font-display), 'Space Grotesk', sans-serif;
+  --font-sans: 'Neue Montreal', var(--font-display), 'Space Grotesk', sans-serif;
+  --font-mono: var(--font-mono), 'JetBrains Mono', monospace;
+
+  /* Curated Fine-Art Museum Palette */
+  --color-obsidian: #0a0a0c;
+  --color-surface: #141417;
+  --color-surface-hover: #1c1c22;
+  --color-paper: #f4f3ef;
+  --color-stone: #8e8e93;
+  --color-stone-dark: #3a3a40;
+  --color-prussian: #1b2a47;
+  --color-gilt: #d4a359;
+  --color-gilt-glow: rgba(212, 163, 89, 0.25);
+  --color-border-hairline: rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.14);
+
+  /* Semantic UI Colors */
+  --color-background: #0a0a0c;
+  --color-foreground: #f4f3ef;
+  --color-card: #141417;
+  --color-card-foreground: #f4f3ef;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-primary: #d4a359;
+  --color-primary-foreground: #0a0a0c;
+  --color-secondary: #8e8e93;
+  --color-accent: #d4a359;
+}
+
+:root {
+  color-scheme: dark;
+  --bg-main: #0a0a0c;
+  --text-main: #f4f3ef;
+  --text-muted: #8e8e93;
+  --accent-gilt: #d4a359;
+  --border-line: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  * {
+    border-color: var(--border-line);
+    box-sizing: border-box;
+  }
+
+  html {
+    background-color: #0a0a0c;
+    color: #f4f3ef;
+    font-family: var(--font-display), 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    scroll-behavior: auto !important;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #0a0a0c;
+    color: #f4f3ef;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+    selection-background-color: #d4a359;
+    selection-color: #0a0a0c;
+  }
+
+  ::selection {
+    background-color: #d4a359;
+    color: #0a0a0c;
+  }
+
+  /* Patrick David Signature Headings */
+  h1, h2, h3, h4, .font-tusker {
+    font-family: var(--font-tusker), var(--font-syne), sans-serif;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .font-syne {
+    font-family: var(--font-syne), sans-serif;
+  }
+
+  .font-mono {
+    font-family: var(--font-mono), 'JetBrains Mono', monospace;
+  }
+}
+
+/* Patrick David Marquee Button Physics */
+.btn-marquee {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-family: var(--font-tusker), var(--font-syne), sans-serif;
+  transition: all 0.35s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.btn-marquee .marquee-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn-marquee:hover .btn-label {
+  opacity: 0;
+}
+
+.btn-marquee:hover .marquee-track {
+  opacity: 1;
+}
+
+/* Authentic Analog Film Grain Texture Overlay */
+.film-grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Lenis Smooth Scroll Configuration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom Editorial Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d4a359;
+}
+
+/* Micro-animations & utilities */
+.will-change-transform {
+  will-change: transform;
+}
+
+.blend-difference {
+  mix-blend-mode: difference;
+}
+
+/* Museum Canvas Border Glow */
+.museum-canvas-frame {
+  box-shadow: 0 20px 80px -20px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.masterwork-glow {
+  box-shadow: 0 0 140px rgba(212, 163, 89, 0.15), 0 0 0 1px rgba(212, 163, 89, 0.25); /* unslop-ignore */
+}
