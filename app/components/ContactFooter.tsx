@@ -14,15 +14,39 @@ export default function ContactFooter() {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate high-velocity RFQ delivery
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setErrorMessage('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to dispatch your inquiry. Please try again.');
+      }
+
       setIsSubmitted(true);
-    }, 800);
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        budget: '',
+        message: '',
+      });
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'An unexpected error occurred.';
+      setErrorMessage(msg);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleBackToTop = () => {
@@ -178,6 +202,12 @@ export default function ContactFooter() {
                     className="w-full bg-[#141417] border border-white/[0.08] focus:border-[#d4a359] rounded px-4 py-3.5 text-sm text-[#f4f3ef] placeholder:text-[#8e8e93]/50 focus:outline-none transition-colors resize-none"
                   />
                 </div>
+
+                {errorMessage && (
+                  <div className="p-4 rounded border border-rose-500/30 bg-rose-500/10 text-rose-400 font-mono text-xs">
+                    {errorMessage}
+                  </div>
+                )}
 
                 <MagneticButton
                   strength={0.3}
