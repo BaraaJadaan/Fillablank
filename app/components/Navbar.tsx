@@ -6,21 +6,43 @@ import HeroText from './HeroText';
 export default function Navbar() {
   const [replayTrigger, setReplayTrigger] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isPastSprint, setIsPastSprint] = useState(false);
+  const [isInSprint, setIsInSprint] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const sprintEl = document.getElementById('sprint');
       if (sprintEl) {
         const rect = sprintEl.getBoundingClientRect();
-        setIsPastSprint(rect.bottom <= 50);
+        // In sprint when top has reached navbar (<= 60) and bottom is still below navbar (>= 60)
+        const inSprint = rect.top <= 60 && rect.bottom >= 60;
+        setIsInSprint(inSprint);
       } else {
-        setIsPastSprint(window.scrollY > 2000);
+        setIsInSprint(false);
       }
     };
+
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll, { passive: true });
+
+    const lenis = (window as unknown as {
+      lenis?: {
+        on: (event: string, cb: () => void) => void;
+        off: (event: string, cb: () => void) => void;
+      };
+    }).lenis;
+
+    if (lenis) {
+      lenis.on('scroll', handleScroll);
+    }
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+      if (lenis) {
+        lenis.off('scroll', handleScroll);
+      }
+    };
   }, []);
 
   const handleLogoClick = () => {
@@ -62,7 +84,7 @@ export default function Navbar() {
     <header
       id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent ${
-        isPastSprint ? 'backdrop-blur-sm' : 'backdrop-blur-none'
+        isInSprint ? 'backdrop-blur-none' : 'backdrop-blur-[2px]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 h-12 sm:h-11 flex items-center justify-between">
@@ -127,7 +149,7 @@ export default function Navbar() {
             onClick={(e) => handleScrollTo(e, '#contact')}
             className="font-mono text-xs uppercase tracking-widest px-4 py-2 border border-[#d4a359]/40 hover:border-[#d4a359] text-[#f4f3ef] hover:bg-[#d4a359] hover:text-[#0a0a0c] transition-all duration-300 rounded-sm"
           >
-            Start Inquiry
+            Say Hi!
           </a>
         </div>
 

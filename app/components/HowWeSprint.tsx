@@ -14,7 +14,6 @@ const phases = [
     tagline: 'Strategic Architecture & Alignment',
     image: '/paintings/sprint/01-rendezvous.webp',
     desc: 'We strip away agency bureaucracy. Every bi-weekly cycle kicks off with a focused strategic summit between founders and engineering leads. We define technical boundaries, crystallize requirements, and lock down production milestones with zero ambiguity.',
-    deliverables: ['System Architecture Diagram', 'API Contract Sign-off', 'Milestone Gantt with SLAs'],
   },
   {
     num: '02',
@@ -24,7 +23,6 @@ const phases = [
     tagline: 'Uninterrupted Deep Engineering',
     image: '/paintings/sprint/02-silence.webp',
     desc: 'Real breakthrough software requires intense, uninterrupted concentration. No endless Slack pings, no redundant status calls. Our senior builders enter deep execution mode—crafting clean architecture, high-velocity frontend flows, and robust backend logic.',
-    deliverables: ['Zero-Distraction Flow State', 'Clean Microservices Logic', 'Daily Commit Verifications'],
   },
   {
     num: '03',
@@ -34,7 +32,6 @@ const phases = [
     tagline: 'Interactive Preview & Critical Review',
     image: '/paintings/sprint/03-exhibition.webp',
     desc: "We don't deliver static mockups or PDFs. We unveil live, interactive staging environments. You test real physics, live data pipelines, and responsive screens in your own hands. We dissect what works, validate edge cases, and gather surgical feedback.",
-    deliverables: ['Live Staging Environments', 'Haptic & Responsive Hand-Testing', 'Actionable Revision Ledger'],
   },
   {
     num: '04',
@@ -44,7 +41,6 @@ const phases = [
     tagline: 'Hardening, Refinement & Production Launch',
     image: '/paintings/sprint/04-alterations.webp',
     desc: 'The difference between good software and iconic digital products is in the final 10%. We stress-test load capacities, refine micro-interactions to sub-pixel perfection, optimize Core Web Vitals, and ship directly to production.',
-    deliverables: ['Zero-Downtime Deployment', 'Sub-50ms Edge Caching', 'Post-Launch Performance Audit'],
   },
 ];
 
@@ -121,7 +117,9 @@ export default function HowWeSprint() {
                 fill
                 priority={index === 0}
                 sizes="100vw"
-                className="object-cover object-[center_80%] filter brightness-[0.84] contrast-[1.08] saturate-[1.28]"
+                className={`object-cover object-[center_45%] filter brightness-[0.84] contrast-[1.08] saturate-[1.28] ${
+                  index === 0 || index === 2 ? 'scale-x-[-1]' : ''
+                }`}
               />
               {/* Soft Directional Gradients at bottom-left preserving characters and faces */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c]/90 via-[#0a0a0c]/35 to-transparent" />
@@ -130,7 +128,7 @@ export default function HowWeSprint() {
 
             {/* FOREGROUND CONTENT — Clean Editorial Typography, NO BLACK BACKGROUND BOX */}
             <div className="relative z-10 max-w-2xl text-left space-y-4">
-              <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[#d4a359] bg-black/60 px-3.5 py-1.5 border border-white/10 rounded-sm">
+              <div className="inline-flex items-center gap-2 font-mono text-xs uppercase  text-[#d4a359] bg-black/60 px-3.5 py-1.5 border border-white/10 rounded-sm">
                 <span>✦</span>
                 <span>{phase.act}</span>
                 <span>✦</span>
@@ -151,17 +149,6 @@ export default function HowWeSprint() {
                 {phase.desc}
               </p>
 
-              {/* Sprint Deliverables Pills without heavy box */}
-              <div className="pt-2 flex flex-wrap gap-2">
-                {phase.deliverables.map((item) => (
-                  <span
-                    key={item}
-                    className="font-mono text-xs px-3 py-1.5 bg-black/40 border border-white/20 text-[#f4f3ef] rounded-sm drop-shadow"
-                  >
-                    ✓ {item}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
         ))}

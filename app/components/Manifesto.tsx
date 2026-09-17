@@ -5,7 +5,7 @@ export default function Manifesto() {
   return (
     <section
       id="manifesto"
-      className="py-32 bg-[#0a0a0c] text-[#f4f3ef] border-b border-white/[0.08]"
+      className="py-32 bg-transparent text-[#f4f3ef] border-b border-white/[0.08]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         {/* Eyebrow */}
@@ -19,7 +19,10 @@ export default function Manifesto() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Monumental Headline */}
           <div className="lg:col-span-6 space-y-8">
-            <h2 className="font-tusker text-5xl sm:text-7xl md:text-8xl tracking-tight uppercase text-[#f4f3ef]">
+            <h2
+              id="why-we-refuse"
+              className="font-tusker text-5xl sm:text-7xl md:text-8xl tracking-tight uppercase text-[#f4f3ef]"
+            >
               Why we refuse
               <br />
               to be a regular
@@ -43,7 +46,7 @@ export default function Manifesto() {
                 Too many agencies hide behind layers of junior hires, account managers, and vague slide decks. Timelines slip, technical debt piles up, and the original vision gets lost in bureaucratic translation.
               </p>
               <p>
-                Fillablank is built as an antidote: a focused studio of elite builders. When you speak with us, you speak directly with the engineers designing your data schemas, writing your backend microservices, and choreographing your user interfaces.
+                Fillablank is built as an antidote: a focused agency of elite builders. When you speak with us, you speak directly with the engineers designing your data schemas, writing your backend microservices, and choreographing your user interfaces.
               </p>
               <p>
                 From regional infrastructure apps to global platforms, we treat every project like a canvas worthy of enduring mastery.

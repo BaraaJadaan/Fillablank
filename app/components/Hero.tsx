@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef } from 'react';
-import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import CurvedArrow from './ui/CurvedArrow';
 import MagneticButton from './ui/MagneticButton';
@@ -10,15 +9,12 @@ import Marquee from './ui/Marquee';
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Parallax on scroll
+  // Parallax on scroll for editorial text
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start'],
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '22%']);
-  const bgDarkness = useTransform(scrollYProgress, [0, 0.85], [0, 0.95]);
-  const bgOpacity = useTransform(scrollYProgress, [0.65, 1], [1, 0.15]);
   const textY = useTransform(scrollYProgress, [0, 1], ['0%', '-12%']);
   const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
 
@@ -35,32 +31,9 @@ export default function Hero() {
     <section
       id="home"
       ref={containerRef}
-      className="relative min-h-screen pt-32 pb-16 overflow-hidden flex flex-col justify-between bg-[#0a0a0c]"
+      className="relative min-h-screen pt-32 pb-16 overflow-hidden flex flex-col justify-between bg-transparent"
     >
-      {/* 1. Immersive Full-Bleed Fine-Art Background — Vibrant, Parallax, Darkening on Scroll */}
-      <motion.div
-        style={{ y: bgY, opacity: bgOpacity }}
-        className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
-      >
-        <Image
-          src="/paintings/hero-canvas.webp"
-          alt="Genesis of Execution — Celestial Fine-Art Canvas"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center filter brightness-[0.85] contrast-[1.08] saturate-[1.28] scale-105"
-        />
-        {/* Soft, Transparent Scrims Preserving Vibrant Colors */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-transparent to-[#0a0a0c]/40" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0c]/70 via-[#0a0a0c]/20 to-transparent" />
-        {/* Progressive Darkening Overlay Fading Into Next Section */}
-        <motion.div
-          style={{ opacity: bgDarkness }}
-          className="absolute inset-0 bg-[#0a0a0c] pointer-events-none"
-        />
-      </motion.div>
-
-      {/* 2. Foreground Content — Monumental Editorial Canvas */}
+      {/* Foreground Content — Monumental Editorial Canvas */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 w-full relative z-10 flex-1 flex flex-col justify-center my-auto">
         <motion.div style={{ y: textY, opacity }} className="space-y-8">
           {/* Subtle Story Arc Plate Indicator */}
@@ -87,7 +60,7 @@ export default function Hero() {
 
           {/* Editorial Subtitle in Neue Montreal */}
           <p className="max-w-2xl text-base sm:text-xl text-[#f4f3ef]/85 font-normal leading-relaxed pt-2 font-display">
-            A focused studio of elite builders. We engineer mission-critical mobile systems, bespoke web platforms, and custom ERP backbones with zero compromise.
+            A focused agency of elite builders. We engineer mobile apps, web platforms, and custom ERP systems with zero compromise.
           </p>
 
           {/* Signature Marquee CTA Button */}
@@ -124,19 +97,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* 3. Subtle Marquee Ticker at the bottom */}
-      <div className="relative z-10 border-t border-white/[0.08] pt-4 bg-[#0a0a0c]/80">
-        <Marquee speed={30} className="font-mono text-xs uppercase tracking-[0.25em] text-[#8e8e93]">
-          <span className="flex items-center gap-6">
-            <span className="text-[#d4a359]">✦</span> NEXT.JS 16 ARCHITECTURE
-            <span className="text-[#d4a359]">✦</span> FLUTTER MOBILE ECOSYSTEMS
-            <span className="text-[#d4a359]">✦</span> ODOO ERP BACKBONES
-            <span className="text-[#d4a359]">✦</span> GSAP HIGH-VELOCITY MOTION
-            <span className="text-[#d4a359]">✦</span> DISTRIBUTED MICROSERVICES
-            <span className="text-[#d4a359]">✦</span> BESPOKE DESIGN SYSTEMS
-          </span>
-        </Marquee>
-      </div>
     </section>
   );
 }

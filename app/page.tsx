@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import IntroSplash from './components/IntroSplash';
 import Navbar from './components/Navbar';
+import HeroBackground from './components/HeroBackground';
 import Hero from './components/Hero';
 import HowWeSprint from './components/HowWeSprint';
 import SelectedCases from './components/SelectedCases';
@@ -22,6 +23,9 @@ export default function Home() {
 
       {/* Sticky Navbar with Interactive Logo Replay */}
       <Navbar />
+
+      {/* Page-level Celestial Canvas Background — Fades out when 'Why we refuse' appears */}
+      <HeroBackground />
 
       {/* 1. Hero: The Blank Canvas */}
       <Hero />

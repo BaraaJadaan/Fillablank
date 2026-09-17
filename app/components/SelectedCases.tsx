@@ -8,6 +8,7 @@ import CurvedArrow from './ui/CurvedArrow';
 export interface ProjectCase {
   id: string;
   title: string;
+  projectType: string;
   category: string;
   tagline: string;
   description: string;
@@ -28,7 +29,8 @@ export interface ProjectCase {
 export const curatedCases: ProjectCase[] = [
   {
     id: 'lumytic',
-    title: 'LUMYTIC ERP',
+    title: 'LUMYTIC',
+    projectType: 'ENTERPRISE ERP SYSTEM, WEB APPLICATION',
     category: 'Web Architecture / Enterprise ERP Showcase',
     tagline: 'A BESPOKE CINEMATIC PLATFORM TRANSLATING COMPLEX ERP ARCHITECTURE INTO HIGH-CONVERTING ENTERPRISE DEMOS.',
     description:
@@ -52,13 +54,14 @@ export const curatedCases: ProjectCase[] = [
   {
     id: 'rafik-darbak',
     title: 'RAFIK DARBAK',
+    projectType: 'MOBILE APPLICATION, RIDE-SHARING SYSTEM',
     category: 'Mobile Systems / Ride-Sharing Network',
     tagline: 'A RESILIENT RIDE-SHARING NETWORK OVERCOMING LOW-BANDWIDTH CONSTRAINTS WITH OFFLINE-FIRST ARCHITECTURE.',
     description:
       'The premier ride-sharing application designed for the Syrian market, overcoming low-bandwidth constraints with offline-first data caching and resilient geospatial tracking.',
     image: '/projects/rafik-darbak.png',
     imageAlt: 'Rafik Darbak ride-sharing mobile application interface',
-    tags: ['Flutter', 'Supabase', 'Offline-First', 'SQLite'],
+    tags: ['Flutter', 'Supabase'],
     links: {
       demo: 'https://play.google.com/store/apps/details?id=com.saveride.app',
     },
@@ -75,6 +78,7 @@ export const curatedCases: ProjectCase[] = [
   {
     id: 'jumlatech',
     title: 'JUMLATECH',
+    projectType: 'B2B WHOLESALE ERP, MOBILE APPLICATION',
     category: 'Enterprise Backbone / B2B Wholesale ERP',
     tagline: 'AN INTEGRATED DIGITAL TRADE ECOSYSTEM MERGING CUSTOM ODOO ERP WITH WHOLESALE LOGISTICS APPS.',
     description:
@@ -98,13 +102,14 @@ export const curatedCases: ProjectCase[] = [
   {
     id: 'archibest',
     title: 'ARCHIBEST',
+    projectType: 'WEB APPLICATION',
     category: 'Web Architecture / Architecture Showcase',
     tagline: 'AN ARCHITECTURAL PLATFORM CONNECTING GLOBAL TALENT WITH JURIES FROM FOSTER + PARTNERS, ZHA, AND BIG.',
     description:
       'Global architectural competition platform connecting international architects and universities with prestigious juries from Foster + Partners, ZHA, and BIG.',
     image: '/projects/archibest.png',
     imageAlt: 'Archibest Competitions global architecture showcase',
-    tags: ['Next.js', 'PostgreSQL', 'Stripe Global', 'Cloudflare'],
+    tags: ['Next.js','.NET', 'PostgreSQL'],
     links: {
       demo: 'https://archibestcompetitions.com',
     },
@@ -115,12 +120,13 @@ export const curatedCases: ProjectCase[] = [
     solution:
       'A sleek, minimalist digital gallery presenting architectural briefs, jury profiles, multi-stage submission flows, and global voting leaderboards.',
     impact: '12,000+ architects from 80+ countries engaged across 14 major challenges.',
-    client: 'Archibest Platform',
+    client: 'Archibest Competitions',
     timeline: '5-Week Sprint',
   },
   {
     id: 'alsharq-bank',
     title: 'ALSHARQ BANK',
+    projectType: 'FINTECH PLATFORM, CORE BANKING SYSTEM',
     category: 'FinTech / Core Security & Banking',
     tagline: 'MISSION-CRITICAL FINANCIAL CORE POWERING ENTERPRISE ACCOUNT MANAGEMENT WITH ZERO DOWNTIME.',
     description:
@@ -137,26 +143,6 @@ export const curatedCases: ProjectCase[] = [
     impact: '99.999% uptime across critical transaction flows with 0 compliance violations.',
     client: 'Alsharq Banking Group',
     timeline: '10-Week Sprint',
-  },
-  {
-    id: 'enterprise-isp',
-    title: 'ENTERPRISE ISP',
-    category: 'Network Systems / Telecommunications',
-    tagline: 'A FIBER MANAGEMENT PLATFORM ORCHESTRATING NETWORK INFRASTRUCTURE AND LIVE HARDWARE DIAGNOSTICS.',
-    description:
-      'Full-stack management system orchestrating fiber network infrastructure, customer subscriptions, campaign pricing, and real-time router diagnostics via TR-069.',
-    image: '/projects/enterprise-isp.png',
-    imageAlt: 'Enterprise ISP network infrastructure and diagnostic dashboard',
-    tags: ['React', '.NET Core', 'TR-069 ACS', 'SQL Server'],
-    challenge:
-      'Managing thousands of fiber switches, OLT ports, and customer optical terminals created immense support bottlenecks during network anomalies.',
-    architecture:
-      'Engineered an event-driven .NET Core backend communicating with network hardware via TR-069, coupled with a reactive TypeScript dashboard showing live signal degradation and telemetry.',
-    solution:
-      'A unified command center allowing tier-1 support agents to diagnose and resolve WiFi signal and fiber port issues without dispatching field technicians.',
-    impact: '65% drop in field truck rolls and sub-10 second diagnostic times.',
-    client: 'National Fiber Telecom',
-    timeline: '8-Week Sprint',
   },
 ];
 
@@ -181,38 +167,46 @@ export default function SelectedCases() {
       className="relative py-28 md:py-36 bg-[#0a0a0c] text-[#f4f3ef] border-b border-white/[0.08]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-        {/* Patrick David Authentic Header */}
-        <div className="flex items-center gap-3 font-mono text-sm uppercase tracking-[0.25em] text-[#f4f3ef] mb-16 pb-6 border-b border-white/[0.08]">
+        {/* Authentic Reference Header */}
+        <div className="flex items-center gap-3 font-mono text-sm uppercase tracking-[0.25em] text-[#f4f3ef] mb-20">
           <span className="text-[#d4a359] text-lg">✦</span>
           <span className="font-semibold">SELECTED CASES</span>
         </div>
 
-        {/* Alternating Project Rows (Title + Stack on one side, Horizontal image strip on the other) */}
-        <div className="divide-y divide-white/[0.08]">
+        {/* Clean, Borderless Alternating Project Rows (Matching Reference Images) */}
+        <div className="space-y-20 md:space-y-32">
           {curatedCases.map((item, idx) => {
             const isImageOnRight = idx % 2 === 0;
 
             return (
-              <div
+              <motion.div
                 key={item.id}
+                initial={{ opacity: 0, y: 100, scale: 0.94, filter: 'blur(8px)' }}
+                whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                viewport={{ once: true, margin: '-60px 0px -60px 0px', amount: 0.25 }}
+                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
                 onClick={() => setSelectedCase(item)}
-                className="group cursor-pointer py-12 md:py-16 flex flex-col md:flex-row items-center gap-8 md:gap-16 justify-between transition-colors duration-300"
+                className="group cursor-pointer flex flex-col md:flex-row items-center gap-8 md:gap-16 justify-between transition-colors duration-300"
                 data-cursor-text="Inspect"
               >
                 {isImageOnRight ? (
                   <>
-                    {/* Left: Project Title & Stack */}
-                    <div className="flex-1 w-full text-left space-y-3">
-                      <h3 className="font-tusker text-5xl sm:text-7xl md:text-8xl font-semibold tracking-normal uppercase text-[#f4f3ef] group-hover:text-[#d4a359] transition-colors leading-[0.9]">
+                    {/* Left: Project Title & Subtitle */}
+                    <div className="flex-1 w-full text-left space-y-2 sm:space-y-3">
+                      <h3 className="font-tusker text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-semibold tracking-normal uppercase text-[#f4f3ef] group-hover:text-[#d4a359] transition-colors leading-[0.88]">
                         {item.title}
                       </h3>
-                      <p className="font-mono text-xs sm:text-sm tracking-wider uppercase text-[#8e8e93]">
-                        {item.tags.join(', ')}
+                      <p className="font-sans text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold text-[#f4f3ef]/80 group-hover:text-[#f4f3ef] transition-colors">
+                        {item.projectType}
                       </p>
                     </div>
 
-                    {/* Right: Horizontal Image Strip */}
-                    <div className="w-full md:w-[48%] relative aspect-[16/9] overflow-hidden rounded-sm border border-white/10 group-hover:border-white/30 transition-all duration-500 shadow-xl">
+                    {/* Right: Horizontal Preview Image with Shared Layout Animation */}
+                    <motion.div
+                      layoutId={`case-image-container-${item.id}`}
+                      transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                      className="w-full md:w-[50%] lg:w-[48%] relative aspect-[16/9] overflow-hidden rounded-sm shadow-2xl"
+                    >
                       <Image
                         src={item.image}
                         alt={item.imageAlt}
@@ -221,13 +215,17 @@ export default function SelectedCases() {
                         sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
-                    </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
+                    </motion.div>
                   </>
                 ) : (
                   <>
-                    {/* Left: Horizontal Image Strip */}
-                    <div className="w-full md:w-[48%] relative aspect-[16/9] overflow-hidden rounded-sm border border-white/10 group-hover:border-white/30 transition-all duration-500 shadow-xl order-2 md:order-1">
+                    {/* Left: Horizontal Preview Image with Shared Layout Animation */}
+                    <motion.div
+                      layoutId={`case-image-container-${item.id}`}
+                      transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                      className="w-full md:w-[50%] lg:w-[48%] relative aspect-[16/9] overflow-hidden rounded-sm shadow-2xl order-2 md:order-1"
+                    >
                       <Image
                         src={item.image}
                         alt={item.imageAlt}
@@ -236,34 +234,34 @@ export default function SelectedCases() {
                         sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
-                    </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 pointer-events-none" />
+                    </motion.div>
 
-                    {/* Right: Project Title & Stack */}
-                    <div className="flex-1 w-full text-left space-y-3 order-1 md:order-2">
-                      <h3 className="font-tusker text-5xl sm:text-7xl md:text-8xl font-semibold tracking-normal uppercase text-[#f4f3ef] group-hover:text-[#d4a359] transition-colors leading-[0.9]">
+                    {/* Right: Project Title & Subtitle */}
+                    <div className="flex-1 w-full text-left space-y-2 sm:space-y-3 order-1 md:order-2">
+                      <h3 className="font-tusker text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-semibold tracking-normal uppercase text-[#f4f3ef] group-hover:text-[#d4a359] transition-colors leading-[0.88]">
                         {item.title}
                       </h3>
-                      <p className="font-mono text-xs sm:text-sm tracking-wider uppercase text-[#8e8e93]">
-                        {item.tags.join(', ')}
+                      <p className="font-sans text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold text-[#f4f3ef]/80 group-hover:text-[#f4f3ef] transition-colors">
+                        {item.projectType}
                       </p>
                     </div>
                   </>
                 )}
-              </div>
+              </motion.div>
             );
           })}
         </div>
       </div>
 
-      {/* FULL-CANVAS INTERACTIVE EXPANDER (Matching Patrick David Reference Image) */}
+      {/* FULL-CANVAS INTERACTIVE EXPANDER WITH BIDIRECTIONAL SHARED ELEMENT TRANSITION */}
       <AnimatePresence>
         {selectedCase && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-[100] bg-[#0a0a0c] overflow-y-auto flex flex-col justify-between"
           >
             {/* 1. Full-Bleed Fine-Art Canvas Background — Luminous & Sharp (NO BLUR) */}
@@ -281,7 +279,13 @@ export default function SelectedCases() {
             </div>
 
             {/* 2. Top Bar with Hand-Drawn Back Arrow */}
-            <div className="relative z-10 p-6 sm:p-10 md:p-12 max-w-7xl mx-auto w-full">
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4 }}
+              className="relative z-10 p-6 sm:p-10 md:p-12 max-w-7xl mx-auto w-full"
+            >
               <button
                 onClick={() => setSelectedCase(null)}
                 className="group inline-flex items-center gap-4 text-[#d4a359] hover:text-[#e8be78] transition-colors cursor-pointer focus:outline-none"
@@ -294,49 +298,38 @@ export default function SelectedCases() {
                   Back to Cases
                 </span>
               </button>
-            </div>
+            </motion.div>
 
             {/* 3. Main Split Stage: Text on Left, Transitioned Image on Right */}
             <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 md:px-12 w-full flex-1 flex flex-col lg:flex-row items-center justify-between gap-10 md:gap-14 my-auto">
-              {/* Left Column: Title, Bold Tagline, Story Details */}
+              {/* Left Column: Title, Subtitle, Story Details */}
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.15 }}
-                className="w-full lg:w-1/2 space-y-6 text-left"
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.5, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full lg:w-1/2 space-y-4 sm:space-y-6 text-left"
               >
-                {/* Project Title in Tusker Grotesk 2600Semibold */}
-                <h2 className="font-tusker text-5xl sm:text-7xl md:text-8xl font-semibold tracking-normal uppercase text-[#f4f3ef] leading-[0.9]">
-                  {selectedCase.title}
-                </h2>
-
-                {/* Bold Patrick David Style Uppercase Tagline */}
-                <p className="font-tusker text-lg sm:text-xl md:text-2xl text-[#f4f3ef] uppercase tracking-normal leading-snug max-w-lg font-semibold">
-                  {selectedCase.tagline}
-                </p>
+                <div>
+                  <h2 className="font-tusker text-5xl sm:text-7xl md:text-8xl font-semibold tracking-normal uppercase text-[#f4f3ef] leading-[0.9]">
+                    {selectedCase.title}
+                  </h2>
+                  <p className="font-sans text-xs sm:text-sm uppercase tracking-[0.2em] font-semibold text-[#d4a359] mt-2">
+                    {selectedCase.projectType}
+                  </p>
+                </div>
 
                 {/* Narrative Summary */}
                 <p className="font-display text-sm sm:text-base text-[#f4f3ef]/85 leading-relaxed max-w-lg font-normal">
                   {selectedCase.description}
                 </p>
-
-                {/* Impact Metric Callout */}
-                <div className="inline-block bg-black/70 border border-white/15 px-4 py-2.5 rounded-sm">
-                  <span className="font-mono text-[11px] uppercase tracking-widest text-[#d4a359] block mb-0.5">
-                    Verified Outcome
-                  </span>
-                  <span className="font-display text-sm font-medium text-[#f4f3ef]">
-                    {selectedCase.impact}
-                  </span>
-                </div>
               </motion.div>
 
-              {/* Right Column: Project Image Transitioned to Right Half */}
+              {/* Right Column: Shared Element Transitioned Image */}
               <motion.div
-                initial={{ opacity: 0, x: 40, scale: 0.96 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="w-full lg:w-[50%] relative aspect-[16/10] rounded-sm overflow-hidden border border-white/20 shadow-2xl"
+                layoutId={`case-image-container-${selectedCase.id}`}
+                transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full lg:w-[50%] relative aspect-[16/10] rounded-sm overflow-hidden shadow-2xl border border-white/10"
               >
                 <Image
                   src={selectedCase.image}
@@ -350,7 +343,13 @@ export default function SelectedCases() {
             </div>
 
             {/* 4. Bottom Divider Bar with Stack Disciplines & "see case ↗" */}
-            <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 md:px-12 w-full pb-8 pt-6">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.4 }}
+              className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 md:px-12 w-full pb-8 pt-6"
+            >
               <div className="border-t border-white/20 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-xs uppercase tracking-wider">
                 {/* Left: Stack & Key Disciplines */}
                 <div className="text-[#8e8e93] flex items-center gap-3">
@@ -381,10 +380,11 @@ export default function SelectedCases() {
                   </button>
                 )}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
     </section>
   );
 }
+

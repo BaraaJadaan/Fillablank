@@ -172,7 +172,7 @@ export default function MasterworkSection() {
           style={{ opacity: 0 }}
         >
           <p className="font-display text-sm sm:text-base md:text-lg text-[#f4f3ef] leading-relaxed font-normal drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)]">
-            When you bring your vision to Fillablank, you don&apos;t receive an outsourced commodity. You walk away with an enterprise-grade digital product built on clean architecture, extreme performance, and bespoke craftsmanship that stands apart.
+            When you bring your vision to Fillablank, you don&apos;t receive an outsourced commodity. You walk away with an enterprise-grade product built on clean architecture, extreme performance, and bespoke craftsmanship that stands apart.
           </p>
         </div>
       </div>

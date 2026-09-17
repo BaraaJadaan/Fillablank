@@ -103,7 +103,7 @@ export default function ContactFooter() {
                   Inquiry Dispatched Directly to Founders
                 </h4>
                 <p className="font-mono text-xs text-[#8e8e93] max-w-md mx-auto uppercase tracking-wider">
-                  Thank you. A senior engineering lead will review your requirements and reach out within 24 hours.
+                  Thank you. We will review your requirements and reach out within 24 hours.
                 </p>
                 <button
                   type="button"
@@ -157,48 +157,7 @@ export default function ContactFooter() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label
-                      htmlFor="inquiry-company"
-                      className="font-mono text-[11px] uppercase tracking-widest text-[#8e8e93] block mb-2"
-                    >
-                      Organization / Venture
-                    </label>
-                    <input
-                      id="inquiry-company"
-                      type="text"
-                      value={formData.company}
-                      onChange={(e) =>
-                        setFormData({ ...formData, company: e.target.value })
-                      }
-                      placeholder="Acme Corp / Stealth"
-                      className="w-full bg-[#141417] border border-white/[0.08] focus:border-[#d4a359] rounded px-4 py-3.5 text-sm text-[#f4f3ef] placeholder:text-[#8e8e93]/50 focus:outline-none transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="inquiry-budget"
-                      className="font-mono text-[11px] uppercase tracking-widest text-[#8e8e93] block mb-2"
-                    >
-                      Estimated Budget Tier
-                    </label>
-                    <select
-                      id="inquiry-budget"
-                      value={formData.budget}
-                      onChange={(e) =>
-                        setFormData({ ...formData, budget: e.target.value })
-                      }
-                      className="w-full bg-[#141417] border border-white/[0.08] focus:border-[#d4a359] rounded px-4 py-3.5 text-sm text-[#f4f3ef] focus:outline-none transition-colors"
-                    >
-                      <option value="">Select scope tier...</option>
-                      <option value="10k-25k">$10k – $25k (Sprint / MVP)</option>
-                      <option value="25k-50k">$25k – $50k (Full Platform)</option>
-                      <option value="50k+">$50k+ (Enterprise Ecosystem)</option>
-                    </select>
-                  </div>
-                </div>
+               
 
                 <div>
                   <label
