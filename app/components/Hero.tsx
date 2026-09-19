@@ -37,7 +37,7 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-6 md:px-10 w-full relative z-10 flex-1 flex flex-col justify-center my-auto">
         <motion.div style={{ y: textY, opacity }} className="space-y-8">
           {/* Subtle Story Arc Plate Indicator */}
-          <div className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-[#d4a359] bg-black/60 px-3.5 py-1.5 border border-white/10 rounded-sm">
+          <div className="inline-flex items-center gap-3 font-mono text-xs uppercase text-[#d4a359] bg-black/60 px-3.5 py-1.5 border border-white/10 rounded-sm">
             <span>✦</span>
               <span>Act I: The Blank Canvas</span>
             <span>✦</span>

@@ -96,7 +96,13 @@ export default function Navbar() {
           aria-label="Fillablank Studio - Scroll to top and replay brand animation"
           data-cursor-text="Top"
         >
-          <div className="relative text-[#d4a359] shrink-0 transition-colors duration-300 group-hover:text-[#f4f3ef]">
+          <motion.div
+            key={replayTrigger}
+            initial={{ scale: 0.88, opacity: 0.7 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="relative text-[#d4a359] shrink-0 transition-colors duration-300 group-hover:text-[#f4f3ef]"
+          >
             <svg width="22" height="22" viewBox="0 0 44 44" fill="none">
               <path
                 d="M14,4 L4,4 L4,40 L14,40"
@@ -120,7 +126,7 @@ export default function Navbar() {
                 className="animate-pulse"
               />
             </svg>
-          </div>
+          </motion.div>
 
           {/* Exact company-porto typing, dropping, smashing, stitching animation */}
           <HeroText replayTrigger={replayTrigger} className="my-0" />

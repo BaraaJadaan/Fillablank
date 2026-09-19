@@ -139,7 +139,7 @@ export default function MasterworkSection() {
         {/* Top Story Arc Badge — Appears last as user scrolls */}
         <div
           ref={badgeRef}
-          className="inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.25em] text-[#d4a359] mb-8 bg-black/60 px-4 py-1.5 border border-white/10 rounded-sm"
+          className="inline-flex items-center gap-3 font-mono text-xs uppercase text-[#d4a359] mb-8 bg-black/60 px-4 py-1.5 border border-white/10 rounded-sm"
           style={{ opacity: 0 }}
         >
           <span>✦</span>

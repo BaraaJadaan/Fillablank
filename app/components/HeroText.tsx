@@ -46,9 +46,13 @@ export default function HeroText({
   const aX = useTransform(stitchProgress, [0, 1], [0, -spaceWidth]);
   const blankX = useTransform(stitchProgress, [0, 1], [0, -2 * spaceWidth]);
 
+  const dropAnimRef = useRef<ReturnType<typeof fmAnimate> | null>(null);
+  const stitchAnimRef = useRef<ReturnType<typeof fmAnimate> | null>(null);
+
   const startStitch = useCallback(() => {
     setStage('stitch');
-    fmAnimate(stitchProgress, 1, {
+    stitchAnimRef.current?.stop();
+    stitchAnimRef.current = fmAnimate(stitchProgress, 1, {
       duration: 0.5,
       ease: [0.4, 0, 0.2, 1],
       onComplete: () => setStage('done'),
@@ -59,7 +63,8 @@ export default function HeroText({
     setShowCursor(false);
     setIsDropping(true);
     setStage('drop');
-    fmAnimate(dropProgress, 1, {
+    dropAnimRef.current?.stop();
+    dropAnimRef.current = fmAnimate(dropProgress, 1, {
       type: 'spring',
       duration: 0.7,
       damping: 12,
@@ -87,6 +92,10 @@ export default function HeroText({
     measureSpace();
     document.fonts?.ready?.then(measureSpace);
 
+    // Cancel any in-flight animations
+    dropAnimRef.current?.stop();
+    stitchAnimRef.current?.stop();
+
     // Reset all animation state
     dropProgress.set(0);
     stitchProgress.set(0);
@@ -104,10 +113,19 @@ export default function HeroText({
         t = setTimeout(startDrop, 380);
         return;
       }
-      t = setTimeout(next, 130 + Math.random() * 70);
+      t = setTimeout(next, 120 + Math.random() * 60);
     };
-    t = setTimeout(next, 300);
-    return () => clearTimeout(t);
+
+    // On initial mount, 350ms delay for smooth page entry.
+    // On re-click, 150ms for responsive restart.
+    const initialDelay = replayTrigger === 0 ? 350 : 150;
+    t = setTimeout(next, initialDelay);
+
+    return () => {
+      clearTimeout(t);
+      dropAnimRef.current?.stop();
+      stitchAnimRef.current?.stop();
+    };
   }, [replayTrigger, startDrop, dropProgress, stitchProgress]);
 
   const font: React.CSSProperties = {

@@ -146,18 +146,53 @@ export const curatedCases: ProjectCase[] = [
   },
 ];
 
+// Easing curve tailored for high-end editorial slow-luxury feel
+const EASE_EDITORIAL = [0.22, 1, 0.36, 1] as const;
+
+// 1. Slow, majestic scroll emergence animation for project cards
+const CARD_SCROLL_ANIMATION = {
+  initial: { opacity: 0, y: 70, scale: 0.96, filter: 'blur(6px)' },
+  whileInView: { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' },
+  viewport: { once: true, margin: '0px 0px -60px 0px', amount: 0.15 },
+  transition: { duration: 1.5, ease: EASE_EDITORIAL },
+};
+
+// 2. Slow, bidirectional shared element transition when opening & returning
+const SHARED_LAYOUT_TRANSITION = {
+  duration: 1.3,
+  ease: EASE_EDITORIAL,
+};
+
+// 3. Slow backdrop fade transition for entering & returning
+const MODAL_BACKDROP_TRANSITION = {
+  duration: 1.2,
+  ease: EASE_EDITORIAL,
+};
+
 export default function SelectedCases() {
   const [selectedCase, setSelectedCase] = useState<ProjectCase | null>(null);
 
-  // Prevent background body scrolling while deep-dive view is active
+  // Prevent background body scrolling & pause smooth scroll while deep-dive view is active
   useEffect(() => {
+    const lenis = (window as unknown as { lenis?: { stop: () => void; start: () => void } }).lenis;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedCase(null);
+      }
+    };
+
     if (selectedCase) {
       document.body.style.overflow = 'hidden';
+      lenis?.stop();
+      window.addEventListener('keydown', handleKeyDown);
     } else {
       document.body.style.overflow = '';
+      lenis?.start();
     }
     return () => {
       document.body.style.overflow = '';
+      lenis?.start();
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [selectedCase]);
 
@@ -181,10 +216,10 @@ export default function SelectedCases() {
             return (
               <motion.div
                 key={item.id}
-                initial={{ opacity: 0, y: 100, scale: 0.94, filter: 'blur(8px)' }}
-                whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-                viewport={{ once: true, margin: '-60px 0px -60px 0px', amount: 0.25 }}
-                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+                initial={CARD_SCROLL_ANIMATION.initial}
+                whileInView={CARD_SCROLL_ANIMATION.whileInView}
+                viewport={CARD_SCROLL_ANIMATION.viewport}
+                transition={CARD_SCROLL_ANIMATION.transition}
                 onClick={() => setSelectedCase(item)}
                 className="group cursor-pointer flex flex-col md:flex-row items-center gap-8 md:gap-16 justify-between transition-colors duration-300"
                 data-cursor-text="Inspect"
@@ -204,7 +239,7 @@ export default function SelectedCases() {
                     {/* Right: Horizontal Preview Image with Shared Layout Animation */}
                     <motion.div
                       layoutId={`case-image-container-${item.id}`}
-                      transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                      transition={SHARED_LAYOUT_TRANSITION}
                       className="w-full md:w-[50%] lg:w-[48%] relative aspect-[16/9] overflow-hidden rounded-sm shadow-2xl"
                     >
                       <Image
@@ -223,7 +258,7 @@ export default function SelectedCases() {
                     {/* Left: Horizontal Preview Image with Shared Layout Animation */}
                     <motion.div
                       layoutId={`case-image-container-${item.id}`}
-                      transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                      transition={SHARED_LAYOUT_TRANSITION}
                       className="w-full md:w-[50%] lg:w-[48%] relative aspect-[16/9] overflow-hidden rounded-sm shadow-2xl order-2 md:order-1"
                     >
                       <Image
@@ -261,7 +296,7 @@ export default function SelectedCases() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={MODAL_BACKDROP_TRANSITION}
             className="fixed inset-0 z-[100] bg-[#0a0a0c] overflow-y-auto flex flex-col justify-between"
           >
             {/* 1. Full-Bleed Fine-Art Canvas Background — Luminous & Sharp (NO BLUR) */}
@@ -280,10 +315,10 @@ export default function SelectedCases() {
 
             {/* 2. Top Bar with Hand-Drawn Back Arrow */}
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -15 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4 }}
+              exit={{ opacity: 0, y: -10, transition: { duration: 0.6, ease: EASE_EDITORIAL } }}
+              transition={{ duration: 0.9, delay: 0.15, ease: EASE_EDITORIAL }}
               className="relative z-10 p-6 sm:p-10 md:p-12 max-w-7xl mx-auto w-full"
             >
               <button
@@ -306,8 +341,8 @@ export default function SelectedCases() {
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.5, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+                exit={{ opacity: 0, x: -20, transition: { duration: 0.7, ease: EASE_EDITORIAL } }}
+                transition={{ duration: 1.0, delay: 0.25, ease: EASE_EDITORIAL }}
                 className="w-full lg:w-1/2 space-y-4 sm:space-y-6 text-left"
               >
                 <div>
@@ -328,7 +363,7 @@ export default function SelectedCases() {
               {/* Right Column: Shared Element Transitioned Image */}
               <motion.div
                 layoutId={`case-image-container-${selectedCase.id}`}
-                transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+                transition={SHARED_LAYOUT_TRANSITION}
                 className="w-full lg:w-[50%] relative aspect-[16/10] rounded-sm overflow-hidden shadow-2xl border border-white/10"
               >
                 <Image
@@ -344,10 +379,10 @@ export default function SelectedCases() {
 
             {/* 4. Bottom Divider Bar with Stack Disciplines & "see case ↗" */}
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.4 }}
+              exit={{ opacity: 0, y: 10, transition: { duration: 0.6, ease: EASE_EDITORIAL } }}
+              transition={{ duration: 0.9, delay: 0.2, ease: EASE_EDITORIAL }}
               className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 md:px-12 w-full pb-8 pt-6"
             >
               <div className="border-t border-white/20 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-xs uppercase tracking-wider">

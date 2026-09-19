@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-import IntroSplash from './components/IntroSplash';
 import Navbar from './components/Navbar';
 import HeroBackground from './components/HeroBackground';
 import Hero from './components/Hero';
@@ -12,15 +10,8 @@ import Manifesto from './components/Manifesto';
 import ContactFooter from './components/ContactFooter';
 
 export default function Home() {
-  const [introCompleted, setIntroCompleted] = useState(false);
-
   return (
     <main className="relative min-h-screen bg-[#0a0a0c] text-[#f4f3ef] overflow-x-hidden selection:bg-[#d4a359] selection:text-[#0a0a0c]">
-      {/* Brand Splash Screen with company-porto physics */}
-      {!introCompleted && (
-        <IntroSplash onComplete={() => setIntroCompleted(true)} />
-      )}
-
       {/* Sticky Navbar with Interactive Logo Replay */}
       <Navbar />
 
